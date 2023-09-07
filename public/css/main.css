@@ -1,0 +1,161 @@
+
+.app-body{ background-color: #696969;}
+.body-content{margin-left: 20px; margin-right: 20px; margin-top: 10px;}
+.main-body{margin-top: -20px;}
+.main-content-card
+{
+    background: #fbfbfb;
+    border-radius: 8px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+    margin: 6rem auto 8.1rem auto;
+
+}
+.card-login{width: 370px; height: 480px;}
+.card-welcome{width: 370px; height: 500px;}
+.card-dashboard{height: 100%; margin-top: -95px;  background: #110e0e !important; color: white; }
+
+#card-content {padding: 12px 12px;}
+#card-title
+{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+    color: black;
+    font-size: 16px;
+    font-family:Times New Roman Times, serif;
+}
+
+.logo-img
+{
+    width: 140px;
+    height: 140px;
+    margin-left: -20px;
+    margin-top: 2px;
+}
+.welcome-img
+{
+    width: 340px;
+    height: 120px;
+    margin-left: -20px;
+    margin-top: 2px;
+}
+.main-label-style{
+
+    font-size: 20px;
+    font-family:Times New Roman Times, serif;
+}
+
+
+.login-title-label{color: red;font-weight: bold;}
+
+.text-input-fields {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+    border-radius: 1px;
+    border: 3px solid #2f8d15;
+}
+
+.text-input-fields:focus {border: 4px solid #3de110;}
+
+.log-in-btn {
+background-color: #2f8d15;
+border-radius: 50px;
+color: white;
+padding: 15px 20px;
+border: none;
+cursor: pointer;
+width: 100%;
+opacity: 0.9;
+}
+.log-in-btn:hover {background-color: #3de110;}
+.submit-btn {
+    margin-top: 20px;
+    background-color: #0000FF;
+    border-radius: 50px;
+    font-size: 18px;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    width: 80%;
+    opacity: 0.9;
+    }
+.submit-btn:hover {background-color: green;}
+    
+.dashboard-navi-btn {
+    background-color: #0000FF;
+    border-radius: 50px;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    width: 200;
+    opacity: 0.9;
+    }
+
+.my-grid-container 
+{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+.my-grid-item 
+{
+    padding: 10px;
+    font-size: 10px;
+}
+.input-labels
+{
+    font-family:Times New Roman Times, serif;
+    font-size: 18px;
+}
+
+/* Data tables */
+.text-center
+{
+    /* align-items: center; */
+    /* align-self: center; */
+    text-align: center;
+    /* align-content: center; */
+}
+.dataTables_length, .dataTables_length select{ margin-left: 20px; font-size: 15px;}
+/* .dataTables_filter input { color:white !important; }; */
+.table-th-row{background-color: #0000FF !important; color: white;}
+.user-name{margin-top: 15px; margin-right: 10px;}
+.log-out-btn { margin-right: 15px;  }
+
+.log-out-span{
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+
+/* cards */
+.card-profile{
+    margin-top: -70px;
+    color: black;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    background: whitesmoke;
+	width: 550px;
+	border-radius: 20px;
+}
+.card-profile-img{
+    width:200px; 
+    height:200px;
+}
+.view-table
+{
+    width: 98%;
+    margin-left: 15px;
+    /* margin-right: 10px; */
+}
+
+/* navigation  */
+
+#mySidebar
+{
+    background-color: #0000FF;
+}
