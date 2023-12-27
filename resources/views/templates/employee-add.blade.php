@@ -20,20 +20,20 @@
     </div>
 
     <div class="my-grid-item ">
-        <input class="text-input-fields" type="date"  id="add-StartDate" name="StartDate" autocomplete="off" required="required" placeholder="StartDate">
-    </div>
-
-    <div class="my-grid-item ">
-        <input class="text-input-fields" type="text"  id="add-Salary" name="Salary" autocomplete="off" required="required" placeholder="Salary">
-    </div>
-
-    <div class="my-grid-item ">
-        <input class="text-input-fields" type="text"  id="add-Account" name="Account" autocomplete="off" required="required" placeholder="Account">
+        <select class="text-input-fields" type="text"  id="add-Department" name="department"  required="required">
+            <option></option>
+            @foreach (App\Models\DepartmentsModel::get(['Name']) as $name)
+                <option value="{{$name->Name}}" >{{$name->Name}}</option>
+            @endforeach
+            <option></option>
+        </select>
     </div>
 
     <div class="my-grid-item ">
         <input class="text-input-fields" type="text"  id="add-UserName" name="UserName" autocomplete="off" required="required" placeholder="UserName">
     </div>
+
+    <input type="hidden" value="store" name="store" >
 
     <div class="my-grid-item ">
         <input  class="text-input-fields" type="password" id="add-Password" name="Password" autocomplete="off" required="required" placeholder="Password" name="Password">

@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin LogIn</title>
+<title>Employee LogIn</title>
 
 @include('../../header')
 
@@ -44,7 +44,7 @@
         
     </form>
     <center>
-    <br><a  href="/" class="btn btn-success">Main Menu</a><br>
+    <br><a  href="{{url('/')}}" class="btn btn-success">Main Menu</a><br>
     </center>
 </div>
 </div>

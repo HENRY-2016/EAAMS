@@ -57,16 +57,20 @@ Project Set Up
             php artisan make:model HumanResourceModel -m 
             php artisan make:controller HumanResourceController --resource 
 
-        courses
-            php artisan make:migration create_courses_table --create=courses_table
-            php artisan make:model CoursesModel -m 
-            php artisan make:controller CoursesController --resource 
+        tasks
+            php artisan make:migration create_tasks_table --create=tasks_table
+            php artisan make:model TasksModel -m 
+            php artisan make:controller TasksController --resource 
 
-        safety
-            php artisan make:migration create_safety_table --create=safety_table
-            php artisan make:model SafetyModel -m 
-            php artisan make:controller SafetyController --resource 
+        departments
+            php artisan make:migration create_departments_table --create=departments_table
+            php artisan make:model DepartmentsModel -m 
+            php artisan make:controller DepartmentsController --resource 
 
+        To add the new column
+            php artisan make:migration add_new_column_to_tasks_table --table="tasks_table"
+            
+            
 
 
 ================
@@ -94,8 +98,22 @@ Important routes
         /config-cache
 
 ====================
-Create Default Admin
+Installing The Project
 ====================
+    Install xamp on local machine
+    Extract the folder to htdocs in xamp
+    Create Database in phpmyadmin named *** students_eaams ***
+    modify the *** .evn file ***  with
+        DB_CONNECTION=mysql
+        DB_HOST=127.0.0.1 // default localhost
+        DB_PORT=3306
+        DB_DATABASE='your Data base name'
+        DB_USERNAME='your data base username' // default root
+        DB_PASSWORD='your data base password'
+    Restart Xamp
+        In Browser run /migrate
+
+
     In phpmyadmin in SQL run
         Select Admin table
             INSERT INTO `admin_table`(`id`, `FName`, `LName`, `Contact`, `UserName`, `PassWord`, `created_at`, `updated_at`) VALUES ('1','Admin','Admin','0000000','Admin','Admin','2023-08-31 02:37:33','2023-08-31 02:37:33')

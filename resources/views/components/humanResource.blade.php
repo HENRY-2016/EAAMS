@@ -109,6 +109,52 @@
             </div>
         </div>
     </div>
+         <!-- The show Modal -->
+         <div class="modal fade " id="showModal" tabindex="-1" aria-labelledby="showModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <p class="modal-title text-center" >Viewing A User Details</p>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <b><p class="text-start">Name</p></b>
+                                <p class="text-start" id="show-Name-id" ></p>
+                            </td>
+                            <td>
+                                <b><p class="text-start">Contact</p></b>
+                                <p class="text-start" id="show-contact-id" ></p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b><p class="text-start">User Name</p></b>
+                                <p class="text-start" id="show-username-id" ></p>
+                            </td>
+                            <td>
+                                @if (session('userType') === 'Admin')
+                                <b><p class="text-start">Password</p></b>
+                                <p class="text-start" id="show-password-id" ></p>
+                                @endif
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
 
     <!-- The edit Modal -->
     <div class="modal fade modal-lg" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">

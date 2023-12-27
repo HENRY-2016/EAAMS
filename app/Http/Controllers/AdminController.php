@@ -124,7 +124,6 @@ class AdminController extends Controller
     {
         $rowId = $request->deleteId;
 
-            echo "rowId";
         // delete
         $data = AdminModel::findOrFail($rowId);
         $data ->delete();

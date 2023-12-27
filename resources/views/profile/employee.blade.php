@@ -18,8 +18,6 @@
             
         </div>
         <a href="{{url('/profile/employee')}}" class="btn btn-success">Profile</a>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Check In - Out</button>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Activities</button>
         <div class="main-body ">
             <br>
             <center>

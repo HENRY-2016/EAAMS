@@ -4,14 +4,15 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\UserAuthenticationController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\HumanResourceController;
 use App\Http\Controllers\EmployeeController;
-
+use App\Http\Controllers\TasksController;
 use App\Models\AdminModel;
+use App\Models\DepartmentsModel;
 use App\Models\EmployeeModel;
 use App\Models\HumanResourceModel;
-
-
+use App\Models\TasksModel;
 
 // migrate db tables
 Route::get('/migrate', function(){
@@ -124,6 +125,55 @@ Route::get('/components/admin', function ()
     return view('welcome');
 });
 
+
+Route::get('/components/task', function () 
+{
+    if (session()->has('user')) {
+        $data = HumanResourceModel::latest()->get();
+        $total = HumanResourceModel::count();
+
+        return view('components/task', compact('data','total'));
+    }
+    return view('welcome');
+});
+
+Route::get('/components/departments', function () 
+{
+    if (session()->has('user')) {
+        $data = DepartmentsModel::latest()->get();
+        $total = DepartmentsModel::count();
+
+        return view('components/departments', compact('data','total'));
+    }
+    return view('welcome');
+});
+Route::get('/components/tasks', function () 
+{
+    if (session()->has('user')) {
+        $data = TasksModel::latest()->get();
+        $total = TasksModel::count();
+        $approveData = TasksModel::where('Status','Finished')->get ();
+        $approveTotal = TasksModel::where('Status','Finished')->count ();
+        $approvedData = TasksModel::where('Approval','Approved')->get ();
+        $approvedTotal = TasksModel::where('Approval','Approved')->count ();
+        return view('components/tasks', compact('data','total','approveData','approveTotal','approvedData','approvedTotal'));
+    }
+    return view('welcome');
+});
+Route::get('/components/hrTasks', function () 
+{
+    if (session()->has('user')) {
+        $data = TasksModel::latest()->get();
+        $total = TasksModel::count();
+        $approvedData = TasksModel::where('Approval','Approved')->get ();
+        $approvedTotal = TasksModel::where('Approval','Approved')->count ();
+        $appraisedData = EmployeeModel::where('Appraise','yes')->get ();
+        $appraisedTotal = EmployeeModel::where('Appraise','yes')->count ();
+        return view('components/hrTasks', compact('data','total','approvedData','approvedTotal','appraisedData','appraisedTotal'));
+    }
+    return view('welcome');
+});
+
 Route::get('/components/humanResource', function () 
 {
     if (session()->has('user')) {
@@ -144,25 +194,8 @@ Route::get('/components/employee', function ()
     }
     return view('welcome');
 });
-// Route::get('/components/courses', function () 
-// {
-//     if (session()->has('user')) {
-//         $data = CoursesModel::latest()->get ();
-//         $total = CoursesModel::count();
-//         return view('components/courses', compact('data','total'));
-//     }
-//     return view('welcome');
-// });
-// Route::get('/components/safety', function () 
-// {
-//     if (session()->has('user')) {
-//         $data = SafetyModel::latest()->get ();
-//         $total = SafetyModel::count();
-//         return view('components/safety', compact('data','total'));
-//     }
-//     return view('welcome');
-// });
 
+Route::get('/components/empTasks/{EmpId?}',[TasksController::class,'empTasksView'] );
 
 
 
@@ -170,5 +203,5 @@ Route::get('/components/employee', function ()
 Route::resource('AdminResource',AdminController::class);
 Route::resource('EmployeeResource',EmployeeController::class);
 Route::resource('HumanResource',HumanResourceController::class);
-// Route::resource('CoursesResource',CoursesController::class);
-// Route::resource('SafetyResource',SafetyController::class);
+Route::resource('DepartmentsResource',DepartmentsController ::class);
+Route::resource('TasksResource',TasksController::class);

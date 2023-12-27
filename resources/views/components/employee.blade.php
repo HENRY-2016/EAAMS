@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin</title>
+<title>Employee</title>
 
 @include('../../header')
 
@@ -53,8 +53,10 @@
 						<th class="text-center">Password</th>
 						<th class="text-center">Date</th>
 						<th class="text-center">Action1</th>
+                        @if (session('userType') === 'Admin')
 						<th class="text-center">Action2</th>
 						<th class="text-center">Action3</th>
+                        @endif
 					</tr>
 				</thead>
 				@foreach($data as $row)
@@ -65,15 +67,18 @@
 					<td class="text-center">{{$row->UserName}}</td>
 					<td class="text-center">{{$row->PassWord}}</td>
 					<td class="text-center">{{$row->created_at}}</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-id="{{ $row->id }}" data-bs-target="#showModal">Show</button>
+                    </td>
+                    
+                    @if (session('userType') === 'Admin')
                     <td class="text-center" >
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-id="{{ $row->id }}" data-bs-target="#editModal">  Edit</button>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-id="{{ $row->id }}" data-bs-target="#showModal">Show</button>
-                    </td>
-                    <td class="text-center">
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-id="{{ $row->id }}" data-bs-target="#deleteModal">Delete</button>
                     </td>
+                    @endif
 				</tr>
 				@endforeach
 			</table>
@@ -109,7 +114,7 @@
     </div>
 
      <!-- The show Modal -->
-     <div class="modal fade modal-sm" id="showModal" tabindex="-1" aria-labelledby="showModalLabel" aria-hidden="true">
+     <div class="modal fade modal-lg" id="showModal" tabindex="-1" aria-labelledby="showModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modal Header -->
@@ -119,24 +124,44 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <b><p class="text-start">Name</p></b>
-                    <p class="text-start" id="show-Name-id" ></p>
-                    <b><p class="text-start">Contact</p></b>
-                    <p class="text-start" id="show-contact-id" ></p>
-                    <b><p class="text-start">User Name</p></b>
-                    <p class="text-start" id="show-username-id" ></p>
-                    <b><p class="text-start">Address</p></b>
-                    <p class="text-start" id="show-address-id" ></p>
-                    <b><p class="text-start">Position</p></b>
-                    <p class="text-start" id="show-position-id" ></p>
-                    <b><p class="text-start">Salary</p></b>
-                    <p class="text-start" id="show-salary-id" ></p>
-                    <b><p class="text-start">Account</p></b>
-                    <p class="text-start" id="show-account-id" ></p>
-                    <b><p class="text-start">StartDate</p></b>
-                    <p class="text-start" id="show-startDate-id" ></p>
-                    <b><p class="text-start">Password</p></b>
-                    <p class="text-start" id="show-password-id" ></p>
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <b><p class="text-start">Name</p></b>
+                                <p class="text-start" id="show-Name-id" ></p>
+                            </td>
+                            <td>
+                                <b><p class="text-start">Contact</p></b>
+                                <p class="text-start" id="show-contact-id" ></p>
+                            </td>
+                            <td>
+                                <b><p class="text-start">User Name</p></b>
+                                <p class="text-start" id="show-username-id" ></p>
+                            </td>
+                            <td>
+                                <b><p class="text-start">Address</p></b>
+                                <p class="text-start" id="show-address-id" ></p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b><p class="text-start">Position</p></b>
+                                <p class="text-start" id="show-position-id" ></p>
+                            </td>
+                            <td>
+                                <b><p class="text-start">Department</p></b>
+                                <p class="text-start" id="show-Department-id" ></p>
+                            </td>
+                            <td>
+                                @if (session('userType') === 'Admin')
+                                <b><p class="text-start">Password</p></b>
+                                <p class="text-start" id="show-password-id" ></p>
+                                @endif
+                            </td>
+                        </tr>
+
+                    </table>
                 </div>
             
             <!-- Modal footer -->
@@ -223,7 +248,7 @@ $('#showModal').on('show.bs.modal', function(event){
         $('#show-Name-id').html(Name);
         $('#show-contact-id').html(data.data.Contact);
         $('#show-username-id').html(data.data.UserName);
-        $('#show-salary-id').html(data.data.Salary);
+        $('#show-Department-id').html(data.data.Department);
         $('#show-position-id').html(data.data.Position);
         $('#show-account-id').html(data.data.Account);
         $('#show-startDate-id').html(data.data.StartDate);
@@ -236,8 +261,8 @@ $('#editModal').on('show.bs.modal', function(event){
     var id = target.attr('data-bs-id');
     var RequestUrl = "/EmployeeResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
-        var salary = parseInt(data.data.Salary);
-        var Salary = salary.toLocaleString();
+        var Department = parseInt(data.data.Department);
+        var Department = Department.toLocaleString();
         $('#editModal').modal('show');
         $('#editId').val(data.data.id);
         $('#edit-FName').val(data.data.FName);
@@ -247,7 +272,7 @@ $('#editModal').on('show.bs.modal', function(event){
         $('#edit-Password').val(data.data.PassWord);
         $('#edit-Address').val(data.data.Address);
         $('#edit-Position').val(data.data.Position);
-        $('#edit-Salary').val(Salary);
+        $('#edit-Department').val(data.data.Department);
         $('#edit-Account').val(data.data.Account);
         $('#edit-StartDate').val(data.data.StartDate);
 

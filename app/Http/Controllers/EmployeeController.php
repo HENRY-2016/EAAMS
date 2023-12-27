@@ -33,6 +33,20 @@ class EmployeeController extends Controller
     */
     public function store(Request $request)
     {
+        $store = $request->input('store');
+        $appraise = $request->input('appraise');
+
+        if(!empty($appraise))
+        {
+            $empId = $request->EmpId;
+
+            $form_data = array('Appraise'=>'yes');
+            EmployeeModel::whereId ($empId)->update($form_data);
+        return redirect('/components/hrTasks')
+            ->with('success','Employee Is Successfully Appraised');
+        }
+        if(!empty($store))
+        {
         $request -> validate ([
             'FName' => 'required',
             'LName' => 'required',
@@ -41,9 +55,7 @@ class EmployeeController extends Controller
             'Password' => 'required',
             'Address'=> 'required',
             'Position'=> 'required',
-            'StartDate'=> 'required',
-            'Salary'=> 'required',
-            'Account'=> 'required',
+            'department'=> 'required',
         ]);
 
         // insert Data
@@ -55,14 +67,18 @@ class EmployeeController extends Controller
             'Password' => $request->Password,
             'Address'=> $request->Address,
             'Position'=> $request->Position,
-            'StartDate'=> $request->StartDate,
-            'Salary'=> $request->Salary,
-            'Account'=> $request->Account,
+            'StartDate'=> 'null',
+            'Salary'=> 'null',
+            'Account'=> 'null',
+            'Appraise'=>'no',
+            'Department'=> $request->department,
+
 
         );
         EmployeeModel::create ($form_data);
         return redirect('EmployeeResource')
             ->with('success','Data Added successfully.');
+        }
     }
 
     /**
@@ -110,9 +126,7 @@ class EmployeeController extends Controller
             'Password' => 'required',
             'Address'=> 'required',
             'Position'=> 'required',
-            'StartDate'=> 'required',
-            'Salary'=> 'required',
-            'Account'=> 'required',
+            'department'=> 'required',
         ]);
 
         // Update Data
@@ -124,9 +138,7 @@ class EmployeeController extends Controller
             'Password' => $request->Password,
             'Address'=> $request->Address,
             'Position'=> $request->Position,
-            'StartDate'=> $request->StartDate,
-            'Salary'=> $request->Salary,
-            'Account'=> $request->Account,
+            'Department'=> $request->department,
         );
         // update
         EmployeeModel::whereId ($rowId)->update($form_data);
@@ -144,7 +156,6 @@ class EmployeeController extends Controller
     {
         $rowId = $request->deleteId;
 
-            echo "rowId";
         // delete
         $data = EmployeeModel::findOrFail($rowId);
         $data ->delete();

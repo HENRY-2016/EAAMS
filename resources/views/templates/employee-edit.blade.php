@@ -24,11 +24,13 @@
     </div>
 
     <div class="my-grid-item ">
-        <input class="text-input-fields" type="text"  id="edit-Salary" name="Salary" autocomplete="off" required="required" placeholder="Salary">
-    </div>
-
-    <div class="my-grid-item ">
-        <input class="text-input-fields" type="text"  id="edit-Account" name="Account" autocomplete="off" required="required" placeholder="Account">
+        <select class="text-input-fields" type="text"  id="edit-Department" name="department"  required="required">
+            <option></option>
+            @foreach (App\Models\DepartmentsModel::get(['Name']) as $name)
+                <option value="{{$name->Name}}" >{{$name->Name}}</option>
+            @endforeach
+            <option></option>
+        </select>
     </div>
 
     <div class="my-grid-item ">
