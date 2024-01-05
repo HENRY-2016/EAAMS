@@ -290,7 +290,7 @@ $(document).ready(function() {$('#table').DataTable();});
 $('#showModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
-    var RequestUrl = "/TasksResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/TasksResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         $('#showModal').modal('show');
         $('#show-Name-id').html(data.data.Name);
@@ -300,7 +300,7 @@ $('#showModal').on('show.bs.modal', function(event){
 $('#tasksModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
-    var RequestUrl = "/TasksResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/TasksResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         $('#tasksModal').modal('show');
         $('#tasks-Name-id').html(data.data.Name);
@@ -310,7 +310,7 @@ $('#tasksModal').on('show.bs.modal', function(event){
 $('#editModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
-    var RequestUrl = "/TasksResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/TasksResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         $('#editModal').modal('show');
         $('#editId').val(data.data.id);
@@ -324,7 +324,7 @@ $('#editModal').on('show.bs.modal', function(event){
 $('#deleteModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
-    var RequestUrl = "/TasksResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/TasksResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         $('#deleteModal').modal('show');
         $('#deleteId').val(data.data.id);

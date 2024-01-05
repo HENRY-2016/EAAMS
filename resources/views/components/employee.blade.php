@@ -241,7 +241,7 @@ $(document).ready(function() {$('#table').DataTable();});
 $('#showModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
-    var RequestUrl = "/EmployeeResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/EmployeeResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         var Name = data.data.FName +" "+" "+ data.data.LName;
         $('#showModal').modal('show');
@@ -259,7 +259,7 @@ $('#showModal').on('show.bs.modal', function(event){
 $('#editModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
-    var RequestUrl = "/EmployeeResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/EmployeeResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         var Department = parseInt(data.data.Department);
         var Department = Department.toLocaleString();
@@ -284,7 +284,7 @@ $('#editModal').on('show.bs.modal', function(event){
 $('#deleteModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
-    var RequestUrl = "/EmployeeResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/EmployeeResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         $('#deleteModal').modal('show');
         $('#deleteId').val(data.data.id);

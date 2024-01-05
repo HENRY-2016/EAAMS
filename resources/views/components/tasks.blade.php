@@ -394,7 +394,7 @@ $(document).ready(function() {$('#table3').DataTable();});
 $('#showModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
-    var RequestUrl = "/TasksResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/TasksResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         $('#showModal').modal('show');
         $('#show-Name-id').html(data.data.Name);
@@ -405,7 +405,7 @@ $('#showModal').on('show.bs.modal', function(event){
 $('#editModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
-    var RequestUrl = "/TasksResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/TasksResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         $('#editModal').modal('show');
         $('#editId').val(data.data.id);
@@ -418,7 +418,7 @@ $('#approveModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
     var name = target.attr('data-bs-name');
-    var RequestUrl = "/TasksResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/TasksResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         $('#approveModal').modal('show');
         $('#approveId').val(data.data.id);
@@ -431,7 +431,8 @@ $('#approvedModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
     var name = target.attr('data-bs-name');
-    var RequestUrl = "/TasksResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/TasksResource/"+id+"/edit";
+console.log("====="+RequestUrl)
     $.get(RequestUrl, function (data) {
         $('#approvedModal').modal('show');
         $('#approved-Name').html(name);
@@ -444,7 +445,7 @@ $('#approvedModal').on('show.bs.modal', function(event){
 $('#deleteModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
-    var RequestUrl = "/TasksResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/TasksResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         $('#deleteModal').modal('show');
         $('#deleteId').val(data.data.id);

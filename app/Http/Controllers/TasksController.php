@@ -60,7 +60,10 @@ class TasksController extends Controller
             $empId = $request->EmpId;
             $data = TasksModel::where('EmpName',$empId)->get();
             $total = TasksModel::where('EmpName',$empId)->count();
-            return view('components/empTasks', compact('data','total'));
+			$tasksData = TasksModel::where('Status','Pending')->get();
+        $tasksTotal = TasksModel::where('Status','Pending')->count();
+            return view('components/empTasks', compact('data','total','tasksTotal','tasksData'));
+			 
         }
         if(!empty($approve))
         {

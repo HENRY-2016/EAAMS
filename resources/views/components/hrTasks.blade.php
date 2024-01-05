@@ -384,7 +384,7 @@ $(document).ready(function() {$('#table3').DataTable();});
 $('#showModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
-    var RequestUrl = "/TasksResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/TasksResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         $('#showModal').modal('show');
         $('#show-Name-id').html(data.data.Name);
@@ -395,7 +395,7 @@ $('#showModal').on('show.bs.modal', function(event){
 $('#editModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
-    var RequestUrl = "/TasksResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/TasksResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         $('#editModal').modal('show');
         $('#editId').val(data.data.id);
@@ -409,7 +409,7 @@ $('#appraiseModal').on('show.bs.modal', function(event){
     var id = target.attr('data-bs-id');
     var name = target.attr('data-bs-name');
     var emp = target.attr('data-bs-emp');
-    var RequestUrl = "/TasksResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/TasksResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         $('#appraiseModal').modal('show');
         $('#EmpId').val(emp);
@@ -422,7 +422,7 @@ $('#approvedModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
     var name = target.attr('data-bs-name');
-    var RequestUrl = "/TasksResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/TasksResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         $('#approvedModal').modal('show');
         $('#approved-Name').html(name);
@@ -434,7 +434,7 @@ $('#empDetailsModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
     var emp = target.attr('data-bs-emp');
-    var RequestUrl = "/EmployeeResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/EmployeeResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         var Name = data.data.FName +" "+" "+ data.data.LName;
         $('#empDetailsModal').modal('show');
@@ -452,7 +452,7 @@ $('#empDetailsModal').on('show.bs.modal', function(event){
 $('#deleteModal').on('show.bs.modal', function(event){
     var target = jQuery(event.relatedTarget)
     var id = target.attr('data-bs-id');
-    var RequestUrl = "/TasksResource/"+id+"/edit";
+    var RequestUrl = baseUrl+"/TasksResource/"+id+"/edit";
     $.get(RequestUrl, function (data) {
         $('#deleteModal').modal('show');
         $('#deleteId').val(data.data.id);

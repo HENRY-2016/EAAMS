@@ -190,45 +190,45 @@
     </div>
     <script>
 
-$(document).ready(function() {$('#table').DataTable();});
+      $(document).ready(function() {$('#table').DataTable();});
 
-$('#showModal').on('show.bs.modal', function(event){
-    var target = jQuery(event.relatedTarget)
-    var id = target.attr('data-bs-id');
-    var RequestUrl = "/DepartmentsResource/"+id+"/edit";
-    $.get(RequestUrl, function (data) {
-        $('#showModal').modal('show');
-        $('#show-Name-id').html(data.data.Name);
-        $('#show-Description-id').html(data.data.Description);
-    })
-});
+      $('#showModal').on('show.bs.modal', function(event){
+      var target = jQuery(event.relatedTarget)
+      var id = target.attr('data-bs-id');
+      var RequestUrl = baseUrl+"/DepartmentsResource/"+id+"/edit";
+      $.get(RequestUrl, function (data) {
+      $('#showModal').modal('show');
+      $('#show-Name-id').html(data.data.Name);
+      $('#show-Description-id').html(data.data.Description);
+      })
+      });
 
-$('#editModal').on('show.bs.modal', function(event){
-    var target = jQuery(event.relatedTarget)
-    var id = target.attr('data-bs-id');
-    var RequestUrl = "/DepartmentsResource/"+id+"/edit";
-    $.get(RequestUrl, function (data) {
-        $('#editModal').modal('show');
-        $('#editId').val(data.data.id);
-        $('#edit-Name').val(data.data.Name);
-        $('#edit-Description').val(data.data.Description);
-    })
-});
-
-
-$('#deleteModal').on('show.bs.modal', function(event){
-    var target = jQuery(event.relatedTarget)
-    var id = target.attr('data-bs-id');
-    var RequestUrl = "/DepartmentsResource/"+id+"/edit";
-    $.get(RequestUrl, function (data) {
-        $('#deleteModal').modal('show');
-        $('#deleteId').val(data.data.id);
-        $('#Delete-Name').html(data.data.Name);
-    })
-});
+      $('#editModal').on('show.bs.modal', function(event){
+      var target = jQuery(event.relatedTarget)
+      var id = target.attr('data-bs-id');
+      var RequestUrl = baseUrl+"/DepartmentsResource/"+id+"/edit";
+      $.get(RequestUrl, function (data) {
+      $('#editModal').modal('show');
+      $('#editId').val(data.data.id);
+      $('#edit-Name').val(data.data.Name);
+      $('#edit-Description').val(data.data.Description);
+      })
+      });
 
 
-</script>
+      $('#deleteModal').on('show.bs.modal', function(event){
+      var target = jQuery(event.relatedTarget)
+      var id = target.attr('data-bs-id');
+      var RequestUrl = baseUrl+"/DepartmentsResource/"+id+"/edit";
+      $.get(RequestUrl, function (data) {
+      $('#deleteModal').modal('show');
+      $('#deleteId').val(data.data.id);
+      $('#Delete-Name').html(data.data.Name);
+      })
+      });
+
+
+    </script>
 @include('../../footer')
 
 </body>
